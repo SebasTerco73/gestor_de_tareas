@@ -1,6 +1,5 @@
 import sqlite3
 from flask import Flask, request, jsonify, session, render_template
-from markupsafe import escape
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -25,11 +24,11 @@ def init_db():
 @app.route("/registro", methods=["POST"])
 def registro():
     datos = request.get_json(silent=True) or {}
-    usuario = (datos.get("username") or "").strip()
-    contrasena = datos.get("password") or ""
+    usuario = (datos.get("usuario") or "").strip()
+    contrasena = datos.get("contraseña") or ""
 
     if not usuario or not contrasena:
-        return jsonify({"error": "Faltan 'username' o 'password'"}), 400
+        return jsonify({"error": "Faltan 'usuario' o 'contraseña'"}), 400
 
     try:
         with get_db() as conn:
@@ -46,8 +45,8 @@ def registro():
 @app.route("/login", methods=["POST"])
 def login():
     datos = request.get_json(silent=True) or {}
-    usuario = (datos.get("username") or "").strip()
-    contrasena = datos.get("password") or ""
+    usuario = (datos.get("usuario") or "").strip()
+    contrasena = datos.get("contraseña") or ""
 
     with get_db() as conn:
         fila = conn.execute(
@@ -66,7 +65,7 @@ def tareas():
         usuario = session.get("user")
         if not usuario:
             return jsonify({"error": "Debes iniciar sesion para acceder a la lista de tareas"}), 401
-        return render_template("tareas.html", usuario=escape(usuario))
+        return render_template("tareas.html", usuario=usuario)
 
 if __name__ == "__main__":
     init_db()

@@ -5,14 +5,14 @@ s = requests.Session()  # mantiene la cookie de sesión
 
 
 def pedir():
-    return input("username: "), input("password: ")
+    return input("Usuario: "), input("Contraseña: ")
 
 while True:
     op = input("1) Registro\n2) Login\n3) Ver tareas\n4) Salir\n> ")
     if op in ("1", "2"):
         u, p = pedir()
         r = s.post(f"{URL}/{'registro' if op == '1' else 'login'}",
-                   json={"username": u, "password": p})
+                   json={"usuario": u, "contraseña": p})
         print(r.status_code, r.json())
     elif op == "3":
         r = s.get(f"{URL}/tareas")

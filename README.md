@@ -5,9 +5,13 @@ API REST en Flask con registro, login y persistencia en SQLite. Las contraseñas
 ## Estructura
 
 ```
-├── servidor.py     # API Flask + SQLite
-├── cliente.py      # Cliente de consola 
-└── README.md
+├── servidor.py
+├── cliente.py
+├── README.md
+├── .gitignore
+└── templates/
+    └── tareas.html
+
 ```
 
 ## Cómo ejecutar
@@ -28,7 +32,7 @@ El servidor queda en `http://127.0.0.1:5000` y crea `users.db` automáticamente.
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| POST | `/registro` | Crea un usuario. Body: `{"username": "sebas", "password": "1234"}` |
+| POST | `/registro` | Crea un usuario. Body: `{"usuario": "sebas", "contraseña": "1234"}` |
 | POST | `/login` | Verifica credenciales e inicia sesión (cookie) |
 | GET | `/tareas` | HTML de bienvenida (requiere haber iniciado sesión) |
 
@@ -38,12 +42,12 @@ El servidor queda en `http://127.0.0.1:5000` y crea `users.db` automáticamente.
 # Registro  -> 201
 curl -X POST http://127.0.0.1:5000/registro \
   -H "Content-Type: application/json" \
-  -d '{"username":"sebas","password":"1234"}'
+  -d '{"usuario":"sebas","contraseña":"1234"}'
 
 # Login (guarda la cookie)  -> 200
 curl -X POST http://127.0.0.1:5000/login -c cookies.txt \
   -H "Content-Type: application/json" \
-  -d '{"username":"sebas","password":"1234"}'
+  -d '{"usuario":"sebas","contraseña":"1234"}'
 
 # Tareas (usa la cookie)  -> 200 + HTML
 curl http://127.0.0.1:5000/tareas -b cookies.txt
