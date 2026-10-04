@@ -11,7 +11,6 @@ API REST en Flask con registro, login y persistencia en SQLite. Las contraseñas
 ├── .gitignore
 └── templates/
     └── tareas.html
-
 ```
 
 ## Cómo ejecutar
@@ -60,6 +59,13 @@ También puede probarse con `python cliente.py`.
 
 ## Capturas de pantalla
 
+<img width="500" height="231" alt="image" src="https://github.com/user-attachments/assets/cd338497-571b-4e24-a8da-c15919c70140" />
+
+<img width="1024" height="341" alt="image" src="https://github.com/user-attachments/assets/7e2a8463-3673-4077-a449-b17556409845" />
+
+<img width="1002" height="263" alt="image" src="https://github.com/user-attachments/assets/c6eeb9e9-677f-437d-802c-95db5e6b703c" />
+
+<img width="1019" height="284" alt="image" src="https://github.com/user-attachments/assets/06b55531-b731-4b3b-a4e1-f02e39031e74" />
 
 
 ## Respuestas conceptuales
