@@ -16,8 +16,8 @@ API REST en Flask con registro, login y persistencia en SQLite. Las contraseñas
 ## Cómo ejecutar
 
 ```bash
-git clone 
-cd 
+git clone https://github.com/SebasTerco73/gestor_de_tareas.git
+cd gestor_de_tareas
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install flask requests
